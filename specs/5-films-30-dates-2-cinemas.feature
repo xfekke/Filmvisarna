@@ -12,18 +12,14 @@ Feature: View Prototype with Minimum 5 Films and at least 30 (Fictional) Screeni
     Then the system should display the schedule with details of each movie showing
     And the user should be able to see information about all the scheduled movie showings
 
-  Scenario: Booking Seats for 3 People
-    Given there is an upcoming movie with available seats
-    And there are seats available for 3 people
-    When a group of moviegoers decides to book seats
-    And they select seats for 3 people
-    And complete the booking process
-    Then the system should confirm the reservation of seats for the group
-    And the moviegoers should have reserved seats for the viewing
+  Scenario: Viewing Movies with Less Than 5 Available
+    Given there is a limited selection of movies with less than 5 available
+    When a user decides to view the list of available movies
+    Then the system should display the available movies
+    And the user should notice that the number of movies is less than 5
 
-  Scenario: Not Enough Seats for Group Booking
-    Given there is an upcoming movie with limited available seats
-    And there are not enough seats for 3 people
-    When a group of moviegoers tries to book seats
-    Then the system should inform the group that there are not enough seats available
-    And the moviegoers shouldn´t be able to book the seats
+  Scenario: Viewing All Showings with Less Than 30 Available
+    Given there is a schedule with limited showings, fewer than 30
+    When a user decides to view all available showings
+    Then the system should display the schedule with details of each movie showing
+    And the user should notice that the number of showings is less than 30
