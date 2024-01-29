@@ -1,32 +1,26 @@
 Feature: Unique URLs for All Views
 
-  Scenario: Booking a single seat for a movie viewing
-    Given there are available seats for 1 person
-    When a moviegoer decides to book a seat for the upcoming film
-    And the moviegoer selects a single seat
-    And completes the booking process
-    Then the system should confirm the reservation of a seat
-    And the moviegoer should have a reserved seat for the viewing
+  Scenario: Viewing URL for Start Page
+    Given the application is accessible and running
+    When a user wants to view the URL for the start page
+    Then the system should provide the URL for the start page
 
-  Scenario: Not enough seats for booking
-    Given there is an upcoming movie with limited available seats
-    And there are not enough seats for 1 person
-    When a moviegoer tries to book a seat
-    Then the system should inform the moviegoer that there are not enough seats available
-    And the moviegoer shouldn´t be able to book the seat
+  Scenario: Viewing URL for Movie Page
+    Given the application is accessible and running
+    When a user wants to view the URL for a specific movie page
+    Then the system should provide the URL for the movie page
 
-  Scenario: Booking Seats for 3 People
-    Given there is an upcoming movie with available seats
-    And there are seats available for 3 people
-    When a group of moviegoers decides to book seats
-    And they select seats for 3 people
-    And complete the booking process
-    Then the system should confirm the reservation of seats for the group
-    And the moviegoers should have reserved seats for the viewing
+  Scenario: Viewing URL for Logging In
+    Given the application is accessible and running
+    When a user wants to view the URL for logging in
+    Then the system should provide the URL for the login page
 
-  Scenario: Not Enough Seats for Group Booking
-    Given there is an upcoming movie with limited available seats
-    And there are not enough seats for 3 people
-    When a group of moviegoers tries to book seats
-    Then the system should inform the group that there are not enough seats available
-    And the moviegoers shouldn´t be able to book the seats
+  Scenario: Viewing URL for Sign Up
+    Given the application is accessible and running
+    When a user wants to view the URL for signing up
+    Then the system should provide the URL for the sign-up page
+
+  Scenario: Viewing URL for Specific Movie
+    Given the application is accessible and running
+    When a user wants to view the URL for a specific movie
+    Then the system should provide the URL for the page of that specific movie
