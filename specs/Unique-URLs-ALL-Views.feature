@@ -1,4 +1,4 @@
-Feature: As a visitor, I want to be able to book seats for a showing so that I know I have preferred seats when I go to watch the movie.
+Feature: Unique URLs for All Views
 
   Scenario: Booking a single seat for a movie viewing
     Given there are available seats for 1 person
