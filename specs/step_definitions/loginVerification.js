@@ -50,8 +50,6 @@ Then('nothing should happen', () => {
     currentUrl = url;
   });
 
-  //cy.wait(5000);
-
   cy.url().should((url) => {
     expect(url).to.eq(currentUrl);
   });
