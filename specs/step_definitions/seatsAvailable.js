@@ -1,5 +1,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
+// Scenario 1: Users wants to see what seats are available
+
 Given('that I have selected the movie and know what date I want to go', () => {
   // Goes to the Oppenheimer movie since it has the most showings
   cy.visit('/film/3');
@@ -23,8 +25,11 @@ Then('I should be able to see a view of the available seats', () => {
 
 });
 
+// Scenario 2: User wants to see what seats are available when none is
+
 Then('I should be able to see a view of a fully booked cinema', () => {
   // Checking if cinema is fully booked
   // only checks the first 81 seats since the 3 last ones are examples only
+  cy.wait(2000);
   cy.get('div.seat:lt(81)').should('have.class', 'booked');
 });
