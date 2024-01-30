@@ -12,7 +12,6 @@ When('I click on “Välj plats” I should be taken to a view of all the seats'
   // force to click element even when covered
   cy.get('button.screening-btn.text-nowrap.btn').first().click({ force: true });
 
-
 });
 
 Then('I should be able to see a view of the available seats', () => {
