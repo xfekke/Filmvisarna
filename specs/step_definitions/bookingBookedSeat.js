@@ -62,6 +62,8 @@ Then('no seats should be selected', () => {
   cy.get('div.seat')
     // Excludes the existing example selected seat
     .not('.selected')
+    // Excludes the already booked seats
+    .not('.booked')
     .each(($seat) => {
     // Clicks on every seat here
     cy.wrap($seat).click({ force: true }); 
