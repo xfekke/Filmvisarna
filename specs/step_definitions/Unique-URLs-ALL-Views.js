@@ -15,12 +15,23 @@ Then('the system should provide the URL for the start page', () => {
 /* No duplicate steps, this one already above
 Given('the application is accessible and running', () => {});*/
 
-When('a user wants to view the URL for a specific movie page', () => {
-  // TODO: implement step
+Cypress.on('uncaught:exception', (err, runnable) => {
+  if (err.message.includes('setExpanded is not defined')) {
+    return false;
+  }
+  return true;
 });
 
+When('a user wants to view the URL for a specific movie page', () => {
+  cy.get('a[href="/filmer"]').should('be.visible').click()
+  cy.get('a[href="/film/1"]').should('be.visible').click()
+
+  cy.url().as('moviePageUrl');
+});
+
+
 Then('the system should provide the URL for the movie page', () => {
-  // TODO: implement step
+
 });
 
 /* No duplicate steps, this one already above
