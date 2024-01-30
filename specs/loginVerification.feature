@@ -2,20 +2,25 @@ Feature: Login Verification
 
   Scenario: Logging in with correct information
     Given the user is on the 'Logga In' page
-    When the user enters their correct username and password
-    And the user submits the login form
-    Then the user should be logged in successfully
-    And redirected to their account page
+    When the user enters their correct email and password
+    And the user clicks the login button
+    Then redirected to the start page
+    And the user should be logged in successfully
 
   Scenario: Logging in with incorrect information
-    Given the visitor is on the 'Logga In' page
-    When the visitor enters an incorrect username or password
-    And the visitor submits the login form
+    Given the user is on the 'Logga In' page
+    When the user enters an incorrect username or password
+    And the user clicks the login button
     Then they should receive an error message about invalid login credentials
-    And be given the option to try logging in again or to reset their password
 
   Scenario: Logging in with empty fields
-    Given the visitor is on the 'Logga In' page
-    When the visitor attempts to submit the login form with empty username and password fields
-    Then they should receive an error message indicating that username and password are required fields
-    And be prompted to fill in the necessary information before submitting again
+    Given the user is on the 'Logga In' page
+    When the user attempts to submit the login form with empty username and password fields
+    Then nothing should happen
+
+  Scenario: Login and navigate to Min Sida
+    Given the user is on the 'Logga In' page
+    When the user enters their correct email and password
+    And the user clicks the login button
+    Then redirected to the start page
+    And then press Min Sida to navigate to the page
