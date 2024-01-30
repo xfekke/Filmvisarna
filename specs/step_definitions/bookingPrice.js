@@ -13,7 +13,7 @@ Given('time and date', () => {
 });
 
 When('ordering only {string} child tickets', (a) => {
-  while (cy.get('.btn-wrapper.d-felx-justify-content-end-align-items-center .span') != 0) {
+  while (cy.get('span').eq(4) != 0) {
     cy.get('svg').eq(0).click({ force: true })
   }
 
