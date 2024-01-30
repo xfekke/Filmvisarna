@@ -13,7 +13,7 @@ Feature: Avoiding booking already booked seats
 
   Scenario: Booking more than 12 seats at a time
     Given that I am on the page to see all seats
-    When I have selected 13 or more seats
+    When I have selected "13" or more seats
     And I try to select any seats
     Then no seats should be selected
 

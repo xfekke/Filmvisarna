@@ -43,12 +43,11 @@ When('I try to click on the available seats', () => {
 
 // Scenario 3: Booking more than 12 seats at a time
 
-When('I have selected 13 or more seats', () => {
+When('I have selected {string} or more seats', (number) => {
 
   // For loop to click +1 additional seat 11 times
-  for (let i = 0; i < 11; i++) {
+  for (let i = 2; i < number; i++) {
     cy.get('svg').eq(1).click({ force: true });
-
   }
 });
 
