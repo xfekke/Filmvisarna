@@ -36,10 +36,11 @@ When('ordering only {string} child tickets', (a) => {
   }
 });
 
-Then('the total cost should be equal to {string} kr', (a) => {
-  let totalCost = cy.get('span').eq(2).children().should('be.visible')
-
-  expect(a).to.equal(parseInt(totalCost))
+Then('the total cost should be equal to {string} kr', (expectedCost) => {
+  cy.get('span').eq(2).invoke('text').then((actualCostText) => {
+    const actualCost = actualCostText.trim();
+    expect(actualCost).to.equal(expectedCost);
+  });
 });
 
 When('ordering only {string} seniors tickets', (a) => {
