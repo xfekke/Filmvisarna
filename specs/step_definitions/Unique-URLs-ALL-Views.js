@@ -1,4 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import baseUrl from "../../baseUrl";
 
 Given('the application is accessible and running', () => {
   cy.visit('/');
@@ -37,12 +38,19 @@ Then('the system should provide the URL for the movie page', function () {
 /* No duplicate steps, this one already above
 Given('the application is accessible and running', () => {});*/
 
-When('a user wants to view the URL for logging in', () => {
-  // TODO: implement step
+When('a user wants to view the URL for logging in', function () {
+  cy.get('a[href="/logga-in"]').should('be.visible').click();
+  // Alias the login page URL
+  cy.url().as('logInUrl');
 });
 
-Then('the system should provide the URL for the login page', () => {
-  // TODO: implement step
+Then('the system should provide the URL for the login page', function () {
+  const baseUrl = Cypress.config().baseUrl;
+  const moviePageUrl = this.moviePageUrl;
+  const logInUrl = this.logInUrl;
+
+  expect(logInUrl).not.to.eq(baseUrl);
+  expect(logInUrl).not.to.eq(moviePageUrl);
 });
 
 /* No duplicate steps, this one already above
