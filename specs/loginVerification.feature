@@ -1,10 +1,11 @@
 Feature: Login Verification
+  userstory
 
   Scenario: Logging in with correct information
     Given the user is on the 'Logga In' page
     When the user enters their correct email and password
     And the user clicks the login button
-    Then redirected to the start page
+    Then the user should be redirected to the start page
     And the user should be logged in successfully
 
   Scenario: Logging in with incorrect information
@@ -20,7 +21,8 @@ Feature: Login Verification
 
   Scenario: Login and navigate to Min Sida
     Given the user is on the 'Logga In' page
-    When the user enters their correct email and password
+    And the user enters their correct email and password
     And the user clicks the login button
-    Then redirected to the start page
-    And then press Min Sida to navigate to the page
+    And the user should be redirected to the start page
+    When the user presses Min Sida
+    Then the site should navigate to Min Sida

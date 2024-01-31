@@ -15,7 +15,7 @@ When("the user clicks the login button", () => {
   cy.get('.form-wrapper.container button[type="submit"]').click();
 });
 
-Then("redirected to the start page", () => {
+Then("the user should be redirected to the start page", () => {
   cy.url().should('eq', Cypress.config().baseUrl);
 });
 
@@ -64,8 +64,11 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return true;
 });
 
-Then('then press Min Sida to navigate to the page', () => {
+When('the user presses Min Sida', () => {
   cy.get('a[href="/min-sida"]').should('be.visible').click();
+});
+
+Then('the site should navigate to Min Sida', () => {
   cy.url().should('include', '/min-sida');
   cy.contains('h6', 'Dina uppgifter').should('be.visible');
 });
