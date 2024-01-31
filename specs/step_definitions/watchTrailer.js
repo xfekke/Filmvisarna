@@ -14,11 +14,10 @@ Cypress.on('window:before:load', (win) => {
 Given('that the user at home page', () => {
   // delete
   cy.visit('/')
-  cy.wait(2000)
+  cy.wait(1000)
 });
 
 When('click on the play button', () => {
-  cy.wait(2000)
   //click on the play button to see the trailer
   cy.get('svg').eq(0).should('be.visible').click({ force: true })
 });
@@ -31,6 +30,7 @@ Then('the site should show the movie trailer', () => {
 Given('press the movie {string}', (movieName) => {
   //pick the movie with the variable name "movieName"
   cy.get('div').contains(movieName).should('be.visible').click({ force: true })
+  cy.wait(1000)
 });
 
 Given('user should go to the Filmer section', () => {
