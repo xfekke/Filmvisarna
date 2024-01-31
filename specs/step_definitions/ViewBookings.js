@@ -35,5 +35,18 @@ When('the user clicks on {string}', () => {
 
 Then('the user should see {string} where information about booking is available.', () => {
   
-  cy.get('.booking-card').should('be.visible'); // checks if there is at least one element with the class 'booking-card'
+  cy.contains('h6', 'Bokningshistorik').should('be.visible') // h6 element with text Bokningshistorik should be visible
+    .next() //  next sibling element after h6
+    .within(() => { 
+      cy.get('.booking-card').should('be.visible'); // checks if there is at least one element with the class booking-card within this section.
+    });
+});
+
+Then('the user should see information about their current bookings under {string}', () => {
+  
+  cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible') // h6 element with text Mina nuvarande bokningar should be visible
+    .next() // next sibling element after h6 
+    .within(() => {
+      cy.get('.booking-card').should('be.visible'); // checks if there is at least one element with the class booking-card within this section.
+    });
 });
