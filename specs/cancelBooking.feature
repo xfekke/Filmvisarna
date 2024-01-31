@@ -20,6 +20,3 @@ Feature: Cancelling a booking of a movie
     And I am on the "Min Sida" page
     When I have no active bookings to cancel
     Then no active bookings are visible
-
-
-
