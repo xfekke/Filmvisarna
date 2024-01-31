@@ -56,15 +56,15 @@ Given('I have made several bookings', () => {
 
 When('I click on "Avboka" for all of my bookings', () => {
   // Click on "Avboka" for each booking
-  cy.get('div.booking-card').each(($bookingCard) => {
-    // In each "booking-card", find and click the "Avboka" button
-    cy.wrap($bookingCard).contains('button.btn.btn-primary.btn-md', 'Avboka').should('exist').click({ force: true });
+  cy.get('div.booking-card button.btn.btn-primary.btn-md:contains("Avboka")').each(($button) => {
+    // Click on the "Avboka" button if it exists
+    cy.wrap($button).click({ force: true });
   });
 });
 
 Then('all of my bookings should be removed', () => {
   // Checks if all bookings have been removed
-  cy.get('div.booking-card:contains("Avboka")').should('not.exist');
+  cy.get('div.booking-card button.btn.btn-primary.btn-md:contains("Avboka")').should('not.exist');
 });
 
 
