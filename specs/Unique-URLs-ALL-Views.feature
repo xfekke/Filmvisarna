@@ -1,5 +1,9 @@
 Feature: Unique URLs for All Views
 
+  Userstory: As a user I want to be able to use the back and forward
+  key in the web brower. Therefore every page needs to have a specific
+  URL.
+
   Scenario: Viewing URL for Start Page
     Given the application is accessible and running
     When a user wants to view the URL for the start page
