@@ -1,5 +1,5 @@
 Feature: Login Verification
-  Userstory: 
+  As a user with an account i would like to loggin and access features as a member of the page.
 
   Scenario: Logging in with correct information
     Given the user is on the "Logga In" page

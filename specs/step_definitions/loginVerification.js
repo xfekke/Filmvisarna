@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-//test-1
+//17.1: Scenario: Logging in with correct information
 
 Given('the user is on the "Logga In" page', () => {
   cy.visit('/logga-in');
@@ -25,7 +25,7 @@ Then('the user should be logged in successfully', () => {
 });
 
 
-//test-2
+//17-2: Scenario: Logging in with incorrect information
 
 When('the user enters an incorrect username or password', () => {
   cy.get('input[name="email"]').type('fel@fel.com');
@@ -36,7 +36,7 @@ Then('they should receive an error message about invalid login credentials', () 
   cy.get('.text-center').contains('Fel uppgifter').should('be.visible');
 });
 
-// test-3
+//17-3: Scenario: Logging in with empty fields
 
 When('the user attempts to submit the login form with empty username and password fields', () => {
   cy.get('input[name="email"]').clear();
@@ -55,7 +55,7 @@ Then('nothing should happen', () => {
   });
 });
 
-//test-4
+//17-4: Scenario: Login and navigate to Min Sida
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   if (err.message.includes('setExpanded is not defined')) {
@@ -73,7 +73,7 @@ Then('the site should navigate to "Min Sida"', () => {
   cy.contains('h6', 'Dina uppgifter').should('be.visible');
 });
 
-//test-5
+//17-5: Scenario: Edit the users information
 
 When('the user clicks on "Redigera"', () => {
   cy.contains('button', 'Redigera').should('be.visible').click();
@@ -84,6 +84,6 @@ Then('the user should be able to change their email, firstname, lastname and pho
   cy.get('input[name="firstname"]').should('be.visible').clear().type('NewFirstName');
   cy.get('input[name="lastname"]').should('be.visible').clear().type('NewLastName');
   cy.get('input[name="phone"]').should('be.visible').clear().type('1234567890');
-  //nedan utkommenterad för att den kommer ändra inlogg som används
+  //Nedanför utkommenterad för att den kommer ändra inlogg som används till sidan!!!!
   //cy.get('form').submit();
 });
