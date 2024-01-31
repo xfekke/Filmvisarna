@@ -6,6 +6,11 @@ Cypress.on('uncaught:exception', (err) => {
   }
 });
 
+Cypress.on('window:before:load', (win) => {
+  cy.spy(win.console, 'error');
+  cy.spy(win.console, 'warn');
+});
+
 Given('that the user at home page', () => {
   // delete
   cy.visit('/')
@@ -19,7 +24,8 @@ When('click on the play button', () => {
 });
 
 Then('the site should show the movie trailer', () => {
-  cy.wait(2000)
+  //wait to show that the site show the trailer
+  cy.wait(3000)
 });
 
 Given('press the movie {string}', (movieName) => {
@@ -28,7 +34,6 @@ Given('press the movie {string}', (movieName) => {
 });
 
 Given('user should go to the Filmer section', () => {
-
   //click to go to the film section
   cy.get('a[href="/filmer"]').should('be.visible').click()
 });
