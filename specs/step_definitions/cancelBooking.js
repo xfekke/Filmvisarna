@@ -76,6 +76,6 @@ When('I have no active bookings to cancel', () => {
 
 Then('no active bookings are visible', () => {
   // No need to do anything here since the "Avboka" button shouldn't exist
-  // The test is automatically passed if the previous "When" step didn't find the button
+  // The test is automatically passed if the previous "When" step didn't find the button "Avboka"
 });
 

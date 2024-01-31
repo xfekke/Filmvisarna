@@ -1,5 +1,6 @@
 Feature: Cancelling a booking of a movie
-  As a user I want to be able to cancel a booking of a movie in case I could not attend as planned
+  As a user I want to be able to cancel a booking of a movie 
+  in case I could not attend as planned
 
   Scenario: User cancels booking succesfully
     Given that I have logged in
