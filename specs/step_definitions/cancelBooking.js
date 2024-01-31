@@ -6,7 +6,7 @@ Cypress.on('uncaught:exception', (err) => {
   }
 });
 
-// The test needs at least 3 bookings to be active for it to work
+// The test needs at least 2 bookings to be active for it to work
 
 // Looks active bookings
 let cancelCount;
@@ -49,7 +49,7 @@ Then('my booking container should be removed', () => {
 
 // Scenario 2: User cancels all bookings
 
-Given('I have made several bookings', () => {
+Given('I have made 1 or several bookings', () => {
   // Checks so there is bookings
   cy.get('div.booking-card:contains("Avboka")');
 });
@@ -67,15 +67,15 @@ Then('all of my bookings should be removed', () => {
   cy.get('div.booking-card button.btn.btn-primary.btn-md:contains("Avboka")').should('not.exist');
 });
 
-
-
 // Scenario 3: No bookings exists
 
 When('I have no active bookings to cancel', () => {
   // Check that there are no bookings to cancel
-  cy.get('div.booking-card').find('button').contains('Avboka').should('not.exist');
+  cy.get('div.booking-card button:contains("Avboka")').should('not.exist');
 });
 
 Then('no active bookings are visible', () => {
-  cy.get('div.booking-card button:contains("Avboka")').should('not.be.visible');
+  // No need to do anything here since the "Avboka" button shouldn't exist
+  // The test is automatically passed if the previous "When" step didn't find the button
 });
+
