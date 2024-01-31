@@ -20,17 +20,6 @@ Given('set total tickets to {string}', (a) => {
   for (let i = 0; i < 2; i++) {
     cy.get('svg').eq(0).should('be.visible').click({ force: true })
   }
-  /*
-  while (cy.get('span').eq(4).should('be.visible') != a) {
-    cy.get('svg').eq(0).should('be.visible').click({ force: true })
-  }
-  while (cy.get('span').eq(5).should('be.visible') != a) {
-    cy.get('svg').eq(2).should('be.visible').click({ force: true })
-  }
-  while (cy.get('span').eq(6).should('be.visible') != a) {
-    cy.get('svg').eq(4).should('be.visible').click({ force: true })
-  }
-  */
 });
 
 When('ordering only {string} child tickets', (a) => {
