@@ -1,9 +1,4 @@
-Feature: 10. As a visitor, I want to be able to book tickets at different prices so that I can take advantage of the lower prices: origonal: 140 SEK, Senior: 120 SEK, Child: 80 SEK
-
-  10.1 Booking tickets for children
-  10.2 Booking tickets for seniors
-  10.3 Booking tickets for mixed ages
-  10.4 Booking zero tickets
+Feature: 10. As a visitor, I want to be able to book tickets at different prices so that I can take advantage of the lower prices for seniors and children: Adult: 140 SEK Senior: 120 SEK Child: 80 SEK
 
   Scenario: Booking tickets for children
     Given that the user at home page
@@ -26,7 +21,7 @@ Feature: 10. As a visitor, I want to be able to book tickets at different prices
     And choosing on a movie
     And time and date
     And set total tickets to "0"
-    When ordering only "1" original tickets, "2" senior tickets and "3" children tickets
+    When ordering "1" original tickets, "2" senior tickets and "3" children tickets
     Then the total cost should be equal to "620" kr
 
   Scenario: Booking zero tickets
