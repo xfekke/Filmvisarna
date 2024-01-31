@@ -1,10 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-Given('that the user at home page', () => {
-  //visit home page
-  cy.visit('/');
-});
-
 Given('choosing on a movie', () => {
   //click on the movie "barbie"
   cy.get('.img-wrapper').eq(3).should('be.visible').click({ force: true })
