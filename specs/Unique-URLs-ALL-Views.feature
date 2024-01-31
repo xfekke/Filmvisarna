@@ -15,10 +15,11 @@ Feature: Unique URLs for All Views
     When a user wants to view the URL for logging in
     Then the system should provide the URL for the login page
 
-  Scenario: Viewing URL for Sign Up
+  Scenario: Viewing URL for My Page when logged in
     Given the application is accessible and running
-    When a user wants to view the URL for signing up
-    Then the system should provide the URL for the sign-up page
+    When a user wants to log in with email "user@example.com" and password "password"
+    And the user wants to view the URL for My Page
+    Then the system should provide the URL for the My Page
 
   Scenario: Viewing URL for Specific Movie
     Given the application is accessible and running
