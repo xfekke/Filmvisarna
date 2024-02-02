@@ -6,7 +6,7 @@ Cypress.on('uncaught:exception', (err) => {
   }
 });
 
-Given('there are available seats for 1 person', () => {
+Given('there are movie viewings available', () => {
   // Go to webpage
   cy.visit('/')
 
@@ -15,12 +15,17 @@ Given('there are available seats for 1 person', () => {
   // Select the second film in the list, in this case rambo last blood
   cy.get('a[href="/film/2"]').should('be.visible').click();
 
-
   // Go to the screening that is tomorrow. 
   cy.get('.screening-table.mt-5.text-center.table')
     .find('tbody tr:nth-child(2) td:nth-child(3) button')
     .click({ force: true });
 
+});
+
+Given('there are available seats for 1 person', () => {
+  cy.wait(100)
+  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first()
+    .click({ force: true });
 });
 
 When('a moviegoer decides to book a seat for the upcoming film', () => {

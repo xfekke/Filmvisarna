@@ -1,7 +1,8 @@
 Feature: As a visitor, I want to be able to book seats for a showing so that I know I have preferred seats when I go to watch the movie.
 
   Scenario: Booking a single seat for a movie viewing
-    Given there are available seats for 1 person
+    Given there are movie viewings available
+    And there are available seats for 1 person
     When a moviegoer decides to book a seat for the upcoming film
     And the moviegoer selects a single seat
     And completes the booking process
