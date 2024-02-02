@@ -66,7 +66,7 @@ When('completes the booking process', () => {
 
 Then('the system should confirm the reservation of a seat', () => {
   // Waiting for the system to book the tickets
-  cy.wait(8000);
+  cy.wait(10000);
   // Clicking the close button on the confirmation of the seat
   cy.get('button.btn.btn-custom')
     .click();
@@ -77,42 +77,60 @@ Then('the moviegoer should have a reserved seat for the viewing', () => {
 });
 
 Given('there is an upcoming movie with limited available seats', () => {
+  // Function to check if there are available seats
+  const checkForAvailableSeats = () => {
+    // Click on films
+    cy.get('a[href="/filmer"]').should('be.visible').click();
 
+    // Select the second film in the list, in this case Rambo: Last Blood
+    cy.get('a[href="/film/2"]').should('be.visible').click();
 
-  // Function to book a seat
-  const bookSeat = () => {
+    // Go to the screening that is tomorrow. 
     cy.get('.screening-table.mt-5.text-center.table')
       .find('tbody tr:nth-child(2) td:nth-child(3) button')
       .click({ force: true });
 
-    cy.get('.btn-wrapper button.btn-custom').first().click({ force: true });
-
     cy.wait(100);
 
-    cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first().click({ force: true });
-
-    cy.get('.col button.btn-custom').click({ force: true });
-
-    cy.get('button.submit-btn.btn.btn-primary').first().click();
-
-    cy.wait(8000);
-
-    cy.get('button.btn.btn-custom').click();
-  };
-
-  // Recursive function to book seats until all are booked
-  const bookAllSeats = () => {
-    bookSeat();
-
-    // Check if there are more seats available
+    // Check if there are available seats
     cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').should('exist').then(() => {
-      // If more seats are available, recursively call the function again
+      // If seats are available, start the booking process
       bookAllSeats();
     });
   };
 
-  // Start the booking process
-  bookAllSeats();
+  // Recursive function to book seats until all are booked
+  const bookAllSeats = () => {
+    // Function to book a seat
+    const bookSeat = () => {
+      // cy.get('.screening-table.mt-5.text-center.table')
+      //   .find('tbody tr:nth-child(2) td:nth-child(3) button')
+      //   .click({ force: true });
+
+      cy.get('.btn-wrapper button.btn-custom').first().click({ force: true });
+
+      cy.wait(100);
+
+      cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first().click({ force: true });
+
+      cy.get('.col button.btn-custom').click({ force: true });
+
+      cy.get('button.submit-btn.btn.btn-primary').first().click();
+
+      cy.wait(20000);
+
+      cy.get('button.btn.btn-custom').click();
+    };
+
+    bookSeat();
+
+    checkForAvailableSeats(bookAllSeats);
+
+  };
+
+  // Start the process by checking for available seats
+  checkForAvailableSeats();
+
 });
 
 Given('there are not enough seats for 1 person', () => {
