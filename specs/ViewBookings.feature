@@ -1,5 +1,8 @@
 Feature: View Bookings and Booking History
-
+  
+  As an user
+  I want to see my bookings and booking history
+  So that I can see when I have booked a visit and view my previous booking history
 
     Scenario: Viewing booking history
         Given the user is visiting "Logga in"
