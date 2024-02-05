@@ -66,7 +66,7 @@ When('completes the booking process', () => {
 
 Then('the system should confirm the reservation of a seat', () => {
   // Waiting for the system to book the tickets
-  cy.wait(10000);
+  cy.wait(20000);
   // Clicking the close button on the confirmation of the seat
   cy.get('button.btn.btn-custom')
     .click();
@@ -75,6 +75,69 @@ Then('the system should confirm the reservation of a seat', () => {
 Then('the moviegoer should have a reserved seat for the viewing', () => {
   // TODO: implement step
 });
+
+// Scenario 2: Booking Seats for 3 People
+
+Given('there is an upcoming movie with available seats', () => {
+  // Logs in the user
+  cy.visit('/logga-in');
+  cy.get('input[name="email"]').type('fekke4201337@gmail.com');
+  cy.get('input[name="password"]').type('Hejsan1234');
+  cy.get('.form-wrapper.container button[type="submit"]').click();
+
+  // Waiting so i logg in
+  cy.wait(1000)
+  cy.get('a[href="/filmer"]').should('be.visible').click();
+  // Select the second film in the list, in this case rambo last blood
+  cy.get('a[href="/film/2"]').should('be.visible').click();
+
+  // Go to the screening that is tomorrow. 
+  cy.get('.screening-table.mt-5.text-center.table')
+    .find('tbody tr:nth-child(2) td:nth-child(3) button')
+    .click({ force: true });
+
+});
+
+Given('there are seats available for 3 people', () => {
+  // Selecting 3 seat
+  cy.get('.btn-wrapper button.btn-custom').eq(1)
+    .click({ force: true });
+
+  // Waiting so the seats appear
+  cy.wait(100)
+
+});
+
+When('a group of moviegoers decides to book seats', () => {
+  // Selecting the first avalible seat
+  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first()
+    .click({ force: true });
+});
+
+When('they select seats for 3 people', () => {
+  // Pressing the book button
+  cy.get('.col button.btn-custom')
+    .click({ force: true });
+});
+
+When('complete the booking process', () => {
+  // Pressing the booking button to confirm booking
+  cy.get('button.submit-btn.btn.btn-primary').first()
+    .click();
+});
+
+Then('the system should confirm the reservation of seats for the group', () => {
+  // Waiting for the system to book the tickets
+  cy.wait(20000);
+});
+
+Then('the moviegoers should have reserved seats for the viewing', () => {
+  // Clicking the close button on the confirmation of the seat
+  cy.get('button.btn.btn-custom')
+    .click();
+});
+
+// Scenario 3: Not enough seats for booking
 
 Given('there is an upcoming movie with limited available seats', () => {
   // Function to check if there are available seats
@@ -159,72 +222,23 @@ Then('the moviegoer shouldn´t be able to book the seat', () => {
 });
 
 
-Given('there is an upcoming movie with available seats', () => {
-  cy.get('a[href="/filmer"]').should('be.visible').click();
-  // Select the second film in the list, in this case rambo last blood
-  cy.get('a[href="/film/2"]').should('be.visible').click();
 
-  // Go to the screening that is tomorrow. 
-  cy.get('.screening-table.mt-5.text-center.table')
-    .find('tbody tr:nth-child(2) td:nth-child(3) button')
-    .click({ force: true });
 
-});
+// /* No duplicate steps, this one already above
+// Given('there is an upcoming movie with limited available seats', () => {});*/
 
-Given('there are seats available for 3 people', () => {
-  // Selecting 3 seat
-  cy.get('.btn-wrapper button.btn-custom').eq(1)
-    .click({ force: true });
+// Given('there are not enough seats for 3 people', () => {
+//   // TODO: implement step
+// });
 
-  // Waiting so the seats appear
-  cy.wait(100)
+// When('a group of moviegoers tries to book seats', () => {
+//   // TODO: implement step
+// });
 
-});
+// Then('the system should inform the group that there are not enough seats available', () => {
+//   // TODO: implement step
+// });
 
-When('a group of moviegoers decides to book seats', () => {
-  // Selecting the first avalible seat
-  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first()
-    .click({ force: true });
-});
-
-When('they select seats for 3 people', () => {
-  // Pressing the book button
-  cy.get('.col button.btn-custom')
-    .click({ force: true });
-});
-
-When('complete the booking process', () => {
-  // Pressing the booking button to confirm booking
-  cy.get('button.submit-btn.btn.btn-primary').first()
-    .click();
-});
-
-Then('the system should confirm the reservation of seats for the group', () => {
-  // Waiting for the system to book the tickets
-  cy.wait(10000);
-});
-
-Then('the moviegoers should have reserved seats for the viewing', () => {
-  // Clicking the close button on the confirmation of the seat
-  cy.get('button.btn.btn-custom')
-    .click();
-});
-
-/* No duplicate steps, this one already above
-Given('there is an upcoming movie with limited available seats', () => {});*/
-
-Given('there are not enough seats for 3 people', () => {
-  // TODO: implement step
-});
-
-When('a group of moviegoers tries to book seats', () => {
-  // TODO: implement step
-});
-
-Then('the system should inform the group that there are not enough seats available', () => {
-  // TODO: implement step
-});
-
-Then('the moviegoers shouldn´t be able to book the seats', () => {
-  // TODO: implement step
-});
+// Then('the moviegoers shouldn´t be able to book the seats', () => {
+//   // TODO: implement step
+// });
