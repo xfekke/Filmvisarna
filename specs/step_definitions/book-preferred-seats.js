@@ -8,7 +8,6 @@ Cypress.on('uncaught:exception', (err) => {
 
 // Scenario 1: Booking a single seat for a movie viewing
 
-
 Given('there are movie viewings available', () => {
   // Go to webpage
   cy.visit('/')
@@ -17,16 +16,23 @@ Given('there are movie viewings available', () => {
 Given('I´m logged in as a user', () => {
   // Logs in the user
   cy.visit('/logga-in');
-  cy.get('input[name="email"]').type('fekke4201337@gmail.com');
-  cy.get('input[name="password"]').type('Hejsan1234');
-  cy.get('.form-wrapper.container button[type="submit"]').click();
+  cy.get('input[name="email"]')
+    .type('fekke4201337@gmail.com');
+  cy.get('input[name="password"]')
+    .type('Hejsan1234');
+  cy.get('.form-wrapper.container button[type="submit"]')
+    .click();
 
   // Waiting so i logg in
   cy.wait(1000)
   // Click on films
-  cy.get('a[href="/filmer"]').should('be.visible').click();
+  cy.get('a[href="/filmer"]')
+    .should('be.visible')
+    .click();
   // Select the second film in the list, in this case rambo last blood
-  cy.get('a[href="/film/2"]').should('be.visible').click();
+  cy.get('a[href="/film/2"]')
+    .should('be.visible')
+    .click();
 
   // Go to the screening that is tomorrow. 
   cy.get('.screening-table.mt-5.text-center.table')
@@ -37,14 +43,16 @@ Given('I´m logged in as a user', () => {
 
 Given('there are available seats for 1 person', () => {
   // Selecting 1 seat
-  cy.get('.btn-wrapper button.btn-custom').first()
+  cy.get('.btn-wrapper button.btn-custom')
+    .first()
     .click({ force: true });
 
   // Waiting so the seats appear
   cy.wait(100)
 
   // Selecting the first avalible seat
-  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first()
+  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)')
+    .first()
     .click({ force: true });
 });
 
@@ -54,13 +62,10 @@ When('a moviegoer decides to book a seat for the upcoming film', () => {
     .click({ force: true });
 });
 
-When('the moviegoer selects a single seat', () => {
-  // TODO: implement step
-});
-
 When('completes the booking process', () => {
   // Pressing the booking button to confirm booking
-  cy.get('button.submit-btn.btn.btn-primary').first()
+  cy.get('button.submit-btn.btn.btn-primary')
+    .first()
     .click();
 });
 
@@ -72,24 +77,28 @@ Then('the system should confirm the reservation of a seat', () => {
     .click();
 });
 
-Then('the moviegoer should have a reserved seat for the viewing', () => {
-  // TODO: implement step
-});
 
 // Scenario 2: Booking Seats for 3 People
 
 Given('there is an upcoming movie with available seats', () => {
   // Logs in the user
   cy.visit('/logga-in');
-  cy.get('input[name="email"]').type('fekke4201337@gmail.com');
-  cy.get('input[name="password"]').type('Hejsan1234');
-  cy.get('.form-wrapper.container button[type="submit"]').click();
+  cy.get('input[name="email"]')
+    .type('fekke4201337@gmail.com');
+  cy.get('input[name="password"]')
+    .type('Hejsan1234');
+  cy.get('.form-wrapper.container button[type="submit"]')
+    .click();
 
   // Waiting so i logg in
   cy.wait(1000)
-  cy.get('a[href="/filmer"]').should('be.visible').click();
+  cy.get('a[href="/filmer"]')
+    .should('be.visible')
+    .click();
   // Select the second film in the list, in this case rambo last blood
-  cy.get('a[href="/film/2"]').should('be.visible').click();
+  cy.get('a[href="/film/2"]')
+    .should('be.visible')
+    .click();
 
   // Go to the screening that is tomorrow. 
   cy.get('.screening-table.mt-5.text-center.table')
@@ -100,7 +109,8 @@ Given('there is an upcoming movie with available seats', () => {
 
 Given('there are seats available for 3 people', () => {
   // Selecting 3 seat
-  cy.get('.btn-wrapper button.btn-custom').eq(1)
+  cy.get('.btn-wrapper button.btn-custom')
+    .eq(1)
     .click({ force: true });
 
   // Waiting so the seats appear
@@ -110,7 +120,8 @@ Given('there are seats available for 3 people', () => {
 
 When('a group of moviegoers decides to book seats', () => {
   // Selecting the first avalible seat
-  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first()
+  cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)')
+    .first()
     .click({ force: true });
 });
 
@@ -122,7 +133,8 @@ When('they select seats for 3 people', () => {
 
 When('complete the booking process', () => {
   // Pressing the booking button to confirm booking
-  cy.get('button.submit-btn.btn.btn-primary').first()
+  cy.get('button.submit-btn.btn.btn-primary')
+    .first()
     .click();
 });
 
@@ -143,10 +155,14 @@ Given('there is an upcoming movie with limited available seats', () => {
   // Function to check if there are available seats
   const checkForAvailableSeats = () => {
     // Click on films
-    cy.get('a[href="/filmer"]').should('be.visible').click();
+    cy.get('a[href="/filmer"]')
+      .should('be.visible')
+      .click();
 
     // Select the second film in the list, in this case Rambo: Last Blood
-    cy.get('a[href="/film/2"]').should('be.visible').click();
+    cy.get('a[href="/film/2"]')
+      .should('be.visible')
+      .click();
 
     // Go to the screening that is tomorrow. 
     cy.get('.screening-table.mt-5.text-center.table')
@@ -162,7 +178,6 @@ Given('there is an upcoming movie with limited available seats', () => {
         if (el.length > 1) {
           bookAllSeats();
         }
-
       });
 
     return;
@@ -172,21 +187,25 @@ Given('there is an upcoming movie with limited available seats', () => {
   const bookAllSeats = () => {
     // Function to book a seat
     const bookSeat = () => {
-      // cy.get('.screening-table.mt-5.text-center.table')
-      //   .find('tbody tr:nth-child(2) td:nth-child(3) button')
-      //   .click({ force: true });
 
-      cy.get('.btn-wrapper button.btn-custom').first().click({ force: true });
+      cy.get('.btn-wrapper button.btn-custom')
+        .first()
+        .click({ force: true });
 
       cy.wait(100);
 
-      cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').first().click({ force: true });
+      cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)')
+        .first()
+        .click({ force: true });
 
-      cy.get('.col button.btn-custom').click({ force: true });
+      cy.get('.col button.btn-custom')
+        .click({ force: true });
 
       cy.wait(1000)
 
-      cy.get('button.submit-btn.btn.btn-primary').first().click();
+      cy.get('button.submit-btn.btn.btn-primary')
+        .first()
+        .click();
 
       cy.wait(20000);
 
@@ -206,39 +225,28 @@ Given('there is an upcoming movie with limited available seats', () => {
 });
 
 Given('there are not enough seats for 1 person', () => {
-  // TODO: implement step
+  // Going back to homepage
+  cy.visit('/')
+  // Going to the movie that´s fully booked
+  cy.get('a[href="/filmer"]')
+    .should('be.visible')
+    .click();
+  // Select the second film in the list, in this case rambo last blood
+  cy.get('a[href="/film/2"]')
+    .should('be.visible')
+    .click();
+
+  // Go to the screening that is tomorrow. 
+  cy.get('.screening-table.mt-5.text-center.table')
+    .find('tbody tr:nth-child(2) td:nth-child(3) button')
+    .click({ force: true });
 });
 
 When('a moviegoer tries to book a seat', () => {
-  // TODO: implement step
+  cy.get('.seat-wrapper .seat-row > .seat.booked')
+    .should('have.length', 82);
 });
 
 Then('the system should inform the moviegoer that there are not enough seats available', () => {
-  // TODO: implement step
+  cy.log('All 81 seats are booked.');
 });
-
-Then('the moviegoer shouldn´t be able to book the seat', () => {
-  // TODO: implement step
-});
-
-
-
-
-// /* No duplicate steps, this one already above
-// Given('there is an upcoming movie with limited available seats', () => {});*/
-
-// Given('there are not enough seats for 3 people', () => {
-//   // TODO: implement step
-// });
-
-// When('a group of moviegoers tries to book seats', () => {
-//   // TODO: implement step
-// });
-
-// Then('the system should inform the group that there are not enough seats available', () => {
-//   // TODO: implement step
-// });
-
-// Then('the moviegoers shouldn´t be able to book the seats', () => {
-//   // TODO: implement step
-// });

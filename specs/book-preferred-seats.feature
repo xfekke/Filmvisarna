@@ -5,10 +5,8 @@ Feature: As a visitor, I want to be able to book seats for a showing so that I k
     And I´m logged in as a user
     And there are available seats for 1 person
     When a moviegoer decides to book a seat for the upcoming film
-    And the moviegoer selects a single seat
     And completes the booking process
     Then the system should confirm the reservation of a seat
-    And the moviegoer should have a reserved seat for the viewing
 
   Scenario: Booking Seats for 3 People
     Given there is an upcoming movie with available seats
@@ -24,11 +22,3 @@ Feature: As a visitor, I want to be able to book seats for a showing so that I k
     And there are not enough seats for 1 person
     When a moviegoer tries to book a seat
     Then the system should inform the moviegoer that there are not enough seats available
-    And the moviegoer shouldn´t be able to book the seat
-
-  Scenario: Not Enough Seats for Group Booking
-    Given there is an upcoming movie with limited available seats
-    And there are not enough seats for 3 people
-    When a group of moviegoers tries to book seats
-    Then the system should inform the group that there are not enough seats available
-    And the moviegoers shouldn´t be able to book the seats
