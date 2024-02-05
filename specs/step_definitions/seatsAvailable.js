@@ -27,5 +27,6 @@ Then('I should be able to see a view of the available seats', () => {
 Then('I should be able to see a view of a fully booked cinema', () => {
   // Checking if cinema is fully booked
   // only checks the first 81 seats since the 3 last ones are examples only
+  cy.wait(2000);
   cy.get('div.seat:lt(81)').should('have.class', 'booked');
 });
