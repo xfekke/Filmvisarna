@@ -47,7 +47,7 @@ Then('the user should see {string} where information about booking is available.
 Then('the user should see information about their current bookings under {string}', () => {
   cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible') // h6 element with text Mina nuvarande bokningar should be visible
     .next() // next sibling element after h6
-    .then(container => { // within container
+    .then(container => { // inside this container
       
       if (container.find('.booking-card').length > 0) { // checks for booking card within container
         
