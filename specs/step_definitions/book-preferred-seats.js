@@ -93,10 +93,13 @@ Given('there is an upcoming movie with limited available seats', () => {
     cy.wait(100);
 
     // Check if there are available seats
-    cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)').should('exist').then(() => {
-      // If seats are available, start the booking process
-      bookAllSeats();
-    });
+    cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)', { timeout: 10000 })
+      .then(() => {
+        // If the element is found, start the booking process
+        bookAllSeats();
+      });
+
+    return;
   };
 
   // Recursive function to book seats until all are booked
@@ -115,11 +118,14 @@ Given('there is an upcoming movie with limited available seats', () => {
 
       cy.get('.col button.btn-custom').click({ force: true });
 
+      cy.wait(1000)
+
       cy.get('button.submit-btn.btn.btn-primary').first().click();
 
       cy.wait(20000);
 
-      cy.get('button.btn.btn-custom').click();
+      cy.get('button.btn.btn-custom')
+        .click();
     };
 
     bookSeat();
