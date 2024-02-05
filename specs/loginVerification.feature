@@ -16,8 +16,9 @@ Feature: Login Verification
 
   Scenario: Logging in with empty fields
     Given the user is on the "Logga In" page
-    When the user attempts to submit the login form with empty username and password fields
+    And the user attempts to submit the login form with empty username and password fields
     Then nothing should happen
+    And they should receive an error message about invalid login credentials
 
   Scenario: Login and navigate to Min Sida
     Given the user is on the "Logga In" page
