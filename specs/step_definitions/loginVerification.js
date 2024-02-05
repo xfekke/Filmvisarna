@@ -30,6 +30,7 @@ Then('the user should be logged in successfully', () => {
 When('the user enters an incorrect username or password', () => {
   cy.get('input[name="email"]').type('fel@fel.com');
   cy.get('input[name="password"]').type('Stortfel123');
+  cy.get('form').submit();
 });
 
 Then('they should receive an error message about invalid login credentials', () => {
