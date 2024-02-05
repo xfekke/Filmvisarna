@@ -7,7 +7,6 @@ Cypress.on('uncaught:exception', (err) => {
 });
 
 // The test needs at least 2 bookings to be active for it to work
-
 // Looks active bookings
 let cancelCount;
 
