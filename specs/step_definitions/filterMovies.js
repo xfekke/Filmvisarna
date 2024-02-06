@@ -2,9 +2,10 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 // Scenario 1: Showing movies that are appropriate for children
 
-Given('the user is on the movie selection page', () => {
-  cy.visit('https://filmvisarna-team2.nodehill.se/filmer'); // goes to that page 
-});
+// Given('the user is on the movie selection page', () => {
+//   cy.visit('https://filmvisarna-team2.nodehill.se/filmer'); // goes to that page
+// });
+// Already defined
 
 When('the user sets the age filter to {string}', (a) => {
   cy.get('select[name="filter"]').select('0'); // when user selects filter Barntillåten

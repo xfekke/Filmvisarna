@@ -76,7 +76,7 @@ Then('the site should navigate to "Min Sida"', () => {
 
 //17-5: Scenario: Edit the users information
 
-When('the user clicks on "Redigera"', () => {
+When('the user clicks on the button "Redigera"', () => {
   cy.contains('button', 'Redigera').should('be.visible').click();
 });
 

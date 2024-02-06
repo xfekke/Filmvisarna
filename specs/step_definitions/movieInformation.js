@@ -5,7 +5,7 @@ Given('the user is on the movie selection page', () => {
   cy.visit('/filmer'); // goes to that page 
 });
 
-When('the user clicks on {string}', (Movie) => {
+When('the user clicks on the {string} they want to see', (Movie) => {
   cy.get('.movie-card').contains(Movie).click(); // if movie card is visible click on movie card withthe right title
 });
 

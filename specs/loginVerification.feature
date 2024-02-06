@@ -34,5 +34,5 @@ Feature: Login Verification
     And the user clicks the login button
     And the user should be redirected to the start page
     And the user presses "Min Sida"
-    When the user clicks on "Redigera"
+    When the user clicks on the button "Redigera"
     Then the user should be able to change their email, firstname, lastname and phonenumber

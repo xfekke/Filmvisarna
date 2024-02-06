@@ -7,7 +7,7 @@ Feature: Information about a movie
   
    Scenario: See more information about a movie 
       Given the user is on the movie selection page
-      When the user clicks on "<Movie>"
+      When the user clicks on the "<Movie>" they want to see
       Then the user should be able to see more information about that movie
 
     Examples:
