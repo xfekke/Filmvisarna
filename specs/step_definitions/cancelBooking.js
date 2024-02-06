@@ -10,6 +10,8 @@ Cypress.on('uncaught:exception', (err) => {
 // Looks active bookings
 let cancelCount;
 
+// TESTING :DDDDD
+
 // Scenario 1: User cancels booking succesfully
 
 Given('that I have logged in', () => {
