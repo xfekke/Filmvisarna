@@ -48,7 +48,7 @@ Given('there are available seats for 1 person', () => {
     .click({ force: true });
 
   // Waiting so the seats appear
-  cy.wait(100)
+  cy.wait(100);
 
   // Selecting the first avalible seat
   cy.get('.seat-wrapper .seat-row > .seat:lt(81):not(.booked)')
@@ -63,6 +63,7 @@ When('a moviegoer decides to book a seat for the upcoming film', () => {
 });
 
 When('completes the booking process', () => {
+  cy.wait(1000);
   // Pressing the booking button to confirm booking
   cy.get('button.submit-btn.btn.btn-primary')
     .first()
@@ -114,7 +115,7 @@ Given('there are seats available for 3 people', () => {
     .click({ force: true });
 
   // Waiting so the seats appear
-  cy.wait(100)
+  cy.wait(1000);
 
 });
 
@@ -132,6 +133,7 @@ When('they select seats for 3 people', () => {
 });
 
 When('complete the booking process', () => {
+  cy.wait(1000);
   // Pressing the booking button to confirm booking
   cy.get('button.submit-btn.btn.btn-primary')
     .first()
