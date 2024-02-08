@@ -15,8 +15,8 @@ When('I click on “Välj plats” I should be taken to a view of all the seats'
 
 Then('I should be able to see a view of the available seats', () => {
 
-  // Website auto-chooses 2 seats, this is in considiration of the code
-  // Need wait for the website to load all the seats
+  // Website auto-chooses 2 seats, this is in consideration of the code
+  // Need to wait for the website to load all the seats
   cy.wait(2000);
   // Check if any seat is available
   cy.get('div.seat:not(.booked):not(.selected)').then(($seats) => {

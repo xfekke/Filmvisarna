@@ -1,9 +1,8 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-
 // Scenario 1: Failing to book a seat that is already booked
 Given('that I am on the page to see all seats', () => {
-  // Goes to the Oppenheimer movie since it has the most showings
+  // Goes to the Oppenheimer movie
   cy.visit('/film/3');
 
   // Goes to the booking page
@@ -28,10 +27,6 @@ Then('I should not be able to select them', () => {
 
 // Scenario 2: Trying to book more seats than available
 
-Given('I want to book more seats than available', () => {
-  // Does nothing
-});
-
 When('I try to click on the available seats', () => {
 
   // Clicks on all div.seat
@@ -43,17 +38,13 @@ When('I try to click on the available seats', () => {
 
 // Scenario 3: Booking more than 12 seats at a time
 
-When('I have selected {string} or more seats', (number) => {
-
-  // For loop to click +1 additional seat 11 times
+When('I have selected {string} or more seats and I try to select any seats', (number) => {
+ 
+  // For loop to click +1 additional seat 
   for (let i = 2; i < number; i++) {
     cy.get('svg').eq(1).click({ force: true });
   }
 });
-
-When('I try to select any seats', () => {
-  // Does nothing
-})
 
 Then('no seats should be selected', () => {
   // Clicks on every seats to make sure they are not being selected

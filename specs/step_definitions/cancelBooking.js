@@ -73,8 +73,14 @@ When('I have no active bookings to cancel', () => {
   cy.get('div.booking-card button:contains("Avboka")').should('not.exist');
 });
 
-Then('no active bookings are visible', () => {
-  // No need to do anything here since the "Avboka" button shouldn't exist
-  // The test is automatically passed if the previous "When" step didn't find the button "Avboka"
+Then('no active bookings are visible', (a) => {
+  // Looks for the container active bookings are in
+  cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible')
+    // Sibling-element
+    .next()
+    .within(() => {
+      // Confirms that there are no active bookings
+      cy.get('.booking-card').should('not.exist');
+    });
 });
 

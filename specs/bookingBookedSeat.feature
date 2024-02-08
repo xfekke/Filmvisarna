@@ -10,13 +10,11 @@ Feature: Avoiding booking already booked seats
 
   Scenario: Trying to book more seats than available
     Given that I am on the page to see all seats
-    And I want to book more seats than available
     When I try to click on the available seats
     Then I should not be able to select them
 
   Scenario: Booking more than 12 seats at a time
     Given that I am on the page to see all seats
-    When I have selected "13" or more seats
-    And I try to select any seats
+    When I have selected "13" or more seats and I try to select any seats 
     Then no seats should be selected
 
