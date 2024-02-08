@@ -17,9 +17,9 @@ Then('I should be able to see a view of the available seats', () => {
 
   // Website auto-chooses 2 seats, this is in consideration of the code
   // Need to wait for the website to load all the seats
-  cy.wait(2000);
+  
   // Check if any seat is available
-  cy.get('div.seat:not(.booked):not(.selected)').then(($seats) => {
+  cy.get('div.seat:not(.booked):not(.selected)', { timeout: 2000 }).then(($seats) => {
 
     // Saves the first 81 seats since the last 3 can't be interacted with
     const interactiveSeats = $seats.slice(0, 81);
