@@ -7,7 +7,7 @@ Given('that the user is on the homepage', () => {
   cy.visit('/');
 });
 
-Given('press the movie {string}', (movieName) => {
+Given('press the poster for the movie {string}', (movieName) => {
   //uses moviename in feature "movieName"
   //stores name
   movieNameGlobal = movieName;
