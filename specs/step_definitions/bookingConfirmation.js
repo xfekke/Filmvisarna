@@ -1,7 +1,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 //global variable be saved for movie title
-let movieNameGlobal; 
+let movieNameGlobal;
 
 Given('that the user is on the homepage', () => {
   cy.visit('/');
@@ -16,7 +16,7 @@ Given('press the movie {string}', (movieName) => {
 
 Given('the user has choosen a screening time', () => {
   //presses first available movie time
-  cy.get('.screening-table.mt-5.text-center.table').find('tbody tr:nth-child(1) td:nth-child(3) button').click();
+  cy.get('.screening-table.mt-5.text-center.table').find('tbody tr:nth-child(1) td:nth-child(3) button').click({ force: true });
   //selecting 1 seat, reduces one from two seats
   cy.get('.btn-wrapper button.btn-custom').first().click({ force: true });
 });
