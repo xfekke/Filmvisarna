@@ -1,6 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-
 Given('the user is on the movie selection page', () => {
   cy.visit('/filmer'); // goes to that page 
 });

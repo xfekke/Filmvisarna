@@ -4,6 +4,7 @@ Cypress.on('uncaught:exception', (err) => {
     return false;
   }
 });
+
 //Scenario 1: Viewing booking history (Will fail if there is no booking history)
 
 Given('the user is visiting {string}', () => {
@@ -20,41 +21,48 @@ Given('the user is providing a valid password', () => {
 });
 
 When('the users clicks on {string} the user should be taken to {string}', () => {
-
-  cy.contains('button', 'Logga in').click(); // clicks the button that contains Logga in
-  cy.url().should('include', 'https://filmvisarna-team2.nodehill.se/'); // checks if that url is included
+  // clicks the button that contains Logga in
+  cy.contains('button', 'Logga in').click(); 
+  // checks if that url is included
+  cy.url().should('include', 'https://filmvisarna-team2.nodehill.se/'); 
 });
 
 When('the user clicks on {string}', () => {
-
-  cy.get('.nav-link.text-nowrap[href="/min-sida"]').should('be.visible'); // .nav-link header where Min Sida is visible
-  cy.get('.nav-link').contains('Min Sida').click(); // clicks the link with class nav-link and text Min Sida
-  cy.url().should('include', 'https://filmvisarna-team2.nodehill.se/min-sida'); // checks if that url is included
-
+  // .nav-link header where Min Sida is visible
+  cy.get('.nav-link.text-nowrap[href="/min-sida"]').should('be.visible'); 
+  // clicks the link with class nav-link and text Min Sida
+  cy.get('.nav-link').contains('Min Sida').click(); 
+  // checks if that url is included
+  cy.url().should('include', 'https://filmvisarna-team2.nodehill.se/min-sida'); 
 });
 
 Then('the user should see {string} where information about booking is available.', () => {
-  
-  cy.contains('h6', 'Bokningshistorik').should('be.visible') // h6 element with text Bokningshistorik should be visible
-    .next() //  next sibling element after h6
+  // h6 element with text Bokningshistorik should be visible
+  cy.contains('h6', 'Bokningshistorik').should('be.visible') 
+    //  next sibling element after h6
+    .next() 
     .within(() => { 
-      cy.get('.booking-card').should('be.visible'); // checks if there is at least one element with the class booking-card within this section.
+      // checks if there is at least one element with the class booking-card within this section.
+      cy.get('.booking-card').should('be.visible'); 
     });
 });
 
 // Scenario 2: Viewing current bookings
 
 Then('the user should see information about their current bookings under {string}', () => {
-  cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible') // h6 element with text Mina nuvarande bokningar should be visible
-    .next() // next sibling element after h6
-    .then(container => { // inside this container
-      
-      if (container.find('.booking-card').length > 0) { // checks for booking card within container
-        
-        cy.wrap(container).find('.booking-card').should('be.visible');  // if booking card is greater than 0 then they should be visible
+  // h6 element with text Mina nuvarande bokningar should be visible
+  cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible') 
+    // next sibling element after h6
+    .next() 
+    // inside this container
+    .then(container => { 
+      // checks for booking card within container
+      if (container.find('.booking-card').length > 0) { 
+        // if booking card is greater than 0 then they should be visible
+        cy.wrap(container).find('.booking-card').should('be.visible');  
       } else {
-        
-        cy.wrap(container).find('.booking-card').should('not.exist'); // booking card shouldn't exist if there are no bookings
+        // booking card shouldn't exist if there are no bookings
+        cy.wrap(container).find('.booking-card').should('not.exist'); 
       }
     });
 });
@@ -62,10 +70,13 @@ Then('the user should see information about their current bookings under {string
 // Scenario 3: No current bookings (Will fail if there are bookings)
 
 Then('the user should see no bookings under {string}', (a) => {
-  cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible') // h6 element with text Mina nuvarande bokningar should be visible
-    .next() // next sibling element after h6 
+  // h6 element with text Mina nuvarande bokningar should be visible
+  cy.contains('h6', 'Mina nuvarande bokningar').should('be.visible') 
+    // next sibling element after h6 
+    .next() 
     .within(() => {
-      cy.get('.booking-card').should('not.exist'); // booking card shouldn't exist if there are no bookings
+      // booking card shouldn't exist if there are no bookings
+      cy.get('.booking-card').should('not.exist'); 
     });
 });
 
