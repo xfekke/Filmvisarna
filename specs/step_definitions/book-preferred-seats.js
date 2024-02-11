@@ -171,7 +171,7 @@ Given('there is an upcoming movie with limited available seats', () => {
       .find('tbody tr:nth-child(2) td:nth-child(3) button')
       .click({ force: true });
 
-    cy.wait(100);
+    cy.wait(1000);
 
     // Check if there are available seats
     cy.get('body, .seat-wrapper .seat-row > .seat:lt(81):not(.booked)', { timeout: 10000 })
