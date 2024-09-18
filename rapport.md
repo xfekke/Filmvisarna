@@ -1,27 +1,27 @@
-Vad testar vi?
+# What are we testing?
 
-Chalil har fokuserat på att testa bokningsbekräftelsen så den fungerar korrekt samt har rätt information som till exempel boknings id,  film samt tid och datum. Han har även testat så att användare med registrerade konton kan logga in samt med negativa scenarier som tar hänsyn till om användaren matar in fel uppgifter. 
+Chalil focused on testing the booking confirmation to ensure it works correctly and contains the right information, such as booking ID, film, and time and date. He also tested that users with registered accounts can log in, including negative scenarios where the user inputs incorrect information.
 
-Mitar har testat de bokningar användaren gjort som finns på “Min sida” samt bokningshistoriken som också syns där. Han skrev testen för att se att filtreringen av filmerna baserad på ålder fungerar och även filmdetaljer syns som det ska.
+Mitar tested the bookings that users made, which appear on "My Page," as well as the booking history visible there. He wrote tests to verify that the filtering of movies based on age works correctly, and that the film details are displayed as they should be.
 
-Joakim har testat prissystemet (det moment när man ändrar på antal biljetter på de olika prisklasserna) men även skrivit tester för att trailers för filmerna fungerar ordentligt. 
+Joakim tested the pricing system (when adjusting the number of tickets across different price categories) and also wrote tests to ensure that the movie trailers function properly.
 
-Albin har skrivit test för att boka säten för specifika visningar av film samt bekräftat att det är korrekt säten. De test försöker boka 1 plats, 3 platser samt en loop för att boka alla resterande platser som finns kvar. Han har även testat att de olika sidorna har en unik URL genom att spara dem som variabler som sedan kan jämföras med varandra. 
+Albin wrote tests to book seats for specific movie screenings and confirmed that the correct seats are being booked. The tests attempt to book 1 seat, 3 seats, and run a loop to book all remaining available seats. He also tested that each page has a unique URL by saving them as variables, which can then be compared to each other.
 
-Sebastian har skrivit ett test för att se att det finns tillgängliga sätet samt ett negativt scenario som tillhör där den kollar om visningen är fullbokad. Tillhörande test kollar så att det inte går att boka platser som redan blivit bokade av någon innan. Han har även skrivit ett test som loggar in för att avboka en visning, avboka resterande bokningar samt kollar så alla visningar är avbokade efter. 
+Sebastian wrote a test to check the availability of seats, along with a negative scenario that checks if the screening is fully booked. The accompanying test ensures that it is not possible to book seats that have already been booked by someone else. He also wrote a test that logs in to cancel a screening, cancels the remaining bookings, and checks that all bookings have been successfully canceled afterward.
 
-Vad visar testerna på? 
+# What do the tests show?
 
-Flera test visade att hemsidan är väldigt långsam på att boka platser samt att det inte finns någon indikation på att bokningen laddas. Alla våra test visade att hemsidan fungerar, det fanns bokningar att se på “Min sida”, det gick att avboka, man kunde se trailers för filmerna, man kan logga in och så vidare. Våra negativa scenarier har visat att hemsidan tar hänsyn till användaren kan skriva in fel information eller om biosalongen är fullbokad till exempel. 
+Several tests revealed that the website is very slow when booking seats, and there is no indication that the booking process is loading. All of our tests showed that the website functions properly: bookings are visible on "My Page," bookings can be canceled, trailers for movies can be viewed, users can log in, and so on. Our negative scenarios demonstrated that the website accounts for situations like users entering incorrect information or when a cinema is fully booked.
 
-Finns det buggar/fel i produkten?
+# Are there any bugs/issues in the product?
 
-Den enda buggen vi upptäckt som direkt hindrar användaren är att alla säten i salongen försvinner efter en liten tid och att sidan måste laddas om. Däremot fanns flera förbättringsområden som att ibland gick det inte att boka flera olika prisklasser samtidigt bredvid varandra.
+The only bug we discovered that directly impacts the user is that all seats in the theater disappear after a short time, and the page has to be reloaded. However, there were several areas for improvement, such as the inability to book different price categories side by side at times.
 
-Finns det saker vi inte hann testa?
+# Are there things we didn’t have time to test?
 
-Som systemägare vill jag se en prototyp med minst 5 filmer, fördelade med minst 30 (fiktiva) visningsdatum över våra 2 biografsalonger. Som besökare vill jag kunna registrera ett nytt konto för att sedan kunna logga in.
+As a system owner, I would like to see a prototype with at least 5 films, spread across a minimum of 30 (fictional) screening dates in our 2 cinema halls. As a visitor, I want to be able to register a new account and then log in.
 
-Finns det tester det kan finnas felaktigheter/brister i själva step-definitions koden? I så fall vilka?
+# Are there any potential errors/shortcomings in the step-definitions code? If so, which ones?
 
-Vi skulle kunna gjort vissa step-definitions tydligare samt även test-koden mer komprimerad och bättre. Det test med att boka hela salongen skulle kunnat göras om så att det bokades så många det gick hela tiden men det hade tagit för lång tid och varit för svårt. Om vi hade planerat hur alla olika features hängt ihop innan vi började så hade vi bara sparat tid men även haft mer effektiva och tydliga step-definitions.
+We could have made some of the step-definitions clearer and the test code more concise and better organized. The test for booking the entire theater could have been reworked so that it booked as many seats as possible each time, but that would have taken too long and been too difficult. If we had planned how all the different features connected before starting, we would not only have saved time but also created more efficient and clearer step-definitions.
